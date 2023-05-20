@@ -605,7 +605,7 @@ while running:
     
     #api information to retrieve information from
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
-    api_key = "284e5c6fc2662939fcec616cdd75f701"
+    api_key = os.environ['weather_api_key']
     valid_input = False
 
     #input validation to make sure the user has chosen an existing city name from the link by checking if it returns an error for not being found
