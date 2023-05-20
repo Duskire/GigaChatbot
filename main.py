@@ -20,7 +20,7 @@ running = True
 #list of commands and special commands for main program
 #all commands yet to be added: "calculator", "convert", "hangman", "trivia", and variety to "hello" command
 commands = ["hello", "flip", "gamble", "guess", "joke", "list", "roll", "rps", "time", "quote", "weather"]
-other_commands = ["random", "stop", "clear", "commands, help"]
+other_commands = ["random", "stop", "clear", "commands", "help"]
 
 #list of commands for the list command
 list_commands = ["create", "add", "remove", "delete", "list", "view", "stop", "help"]
@@ -242,7 +242,8 @@ while running:
           valid_input = True
 
         else:
-          print("You do not have enough money!")
+          print("You do not have enough money, please try again!")
+          time.sleep(1)
 
       else:
         print("That is not a valid number, please try again!")
@@ -283,10 +284,12 @@ while running:
       if guess > secret_number:
         print("The number is lower")
         attempts += 1
+        time.sleep(1)
 
       elif guess < secret_number:
         print("The number is higher")
         attempts += 1
+        time.sleep(1)
 
       else:
         number_guessed = True
@@ -483,7 +486,7 @@ while running:
         valid_input = True
 
       else:
-        print("That is not a valid option!")
+        print("That is not a valid option, please try again!")
         time.sleep(1)
 
     valid_input = False
@@ -498,7 +501,7 @@ while running:
         valid_input = True
 
       else:
-        print("That is not a valid option!")
+        print("That is not a valid option, please try again!")
         time.sleep(1)
 
     roll_outcome = []
