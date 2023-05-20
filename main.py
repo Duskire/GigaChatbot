@@ -8,46 +8,6 @@ import requests
 from random_word import RandomWords
 import pyjokes
 
-#shows user the list of available commands
-def commandsList(list, list2):
-    print("(1/2) Here is a list of commands you can ask GigaChatbot:\n", ', '.join(list))
-    time.sleep(2)
-    print("(2/2) You can also use these special commands:\n", ', '.join(list2))
-
-#gets a random number and either adds it to a list if run more than once, else just returns the number
-def randomNumber(number1, number2, times, outcomes):
-  for i in range(times):
-    chance = random.randint(number1, number2)
-    
-    if times > 1:
-      outcomes.append(str(chance))
-
-  if times > 1:
-    return outcomes
-
-  else:
-    return chance
-
-#gives the user a 1 in 3 chance to double their bet or lose it and returns their new balance
-def gamble(amount, money):
-  chance = random.randint(1, 3)
-  
-  if chance == 1:
-    winnings = amount*2
-    money += amount
-    print(f"You won ${winnings}! You now have ${money}!\n")
-    
-  else:
-    money = money - amount
-    print(f"You lost ${amount}. You now have ${money}.\n")
-
-  return money
-
-def kelvin_to_celsius_farenheit(kelvin):
-  celsius = kelvin - 273.15
-  farenheit = celsius * (9/5) + 32
-  return celsius, farenheit
-
 #variables for use later in the program
 user_money = 1000
 r = RandomWords()
@@ -56,6 +16,7 @@ lists = {}
 random_command = False
 running = True
 
+#lists and dictionaries for use later in the program
 #list of commands and special commands for main program
 #all commands yet to be added: "calculator", "convert", "hangman", "trivia", and variety to "hello" command
 commands = ["hello", "flip", "gamble", "guess", "joke", "list", "roll", "rps", "time", "quote", "weather"]
@@ -140,7 +101,49 @@ quotes_dict = {
   "In the midst of chaos, there is also opportunity" : "Sun Tzu"
 }
 
-#asks for thr users name and greets them to make a more personal connection
+#functions for use later in the program
+#shows user the list of available commands
+def commandsList(list, list2):
+    print("(1/2) Here is a list of commands you can ask GigaChatbot:\n", ', '.join(list))
+    time.sleep(2)
+    print("(2/2) You can also use these special commands:\n", ', '.join(list2))
+
+#gets a random number and either adds it to a list if run more than once, else just returns the number
+def randomNumber(number1, number2, times, outcomes):
+  for i in range(times):
+    chance = random.randint(number1, number2)
+    
+    if times > 1:
+      outcomes.append(str(chance))
+
+  if times > 1:
+    return outcomes
+
+  else:
+    return chance
+
+#gives the user a 1 in 3 chance to double their bet or lose it and returns their new balance
+def gamble(amount, money):
+  chance = random.randint(1, 3)
+  
+  if chance == 1:
+    winnings = amount*2
+    money += amount
+    print(f"You won ${winnings}! You now have ${money}!\n")
+    
+  else:
+    money = money - amount
+    print(f"You lost ${amount}. You now have ${money}.\n")
+
+  return money
+
+def kelvin_to_celsius_farenheit(kelvin):
+  celsius = kelvin - 273.15
+  farenheit = celsius * (9/5) + 32
+  return celsius, farenheit
+
+
+#asks for the user's name and greets them to make a more personal connection
 name = input("What is your name?\n")
 print(f"Nice to meet you {name}, my name is GigaChatbot!")
 time.sleep(2)
@@ -232,7 +235,7 @@ while running:
     while not valid_input:
       gamble_amount = input(f"Choose an amount to gamble. You have ${user_money}.\n")
     
-      if gamble_amount.isdigit:
+      if gamble_amount.isdigit():
         gamble_amount = int(gamble_amount)
 
         if gamble_amount <= user_money:
@@ -475,7 +478,7 @@ while running:
       #user can choose however many sides they want the dice to have
       sides = input("How many sides do you want the dice to have? \n").lower()
 
-      if sides.isdigit:
+      if sides.isdigit():
         sides = int(sides)
         valid_input = True
 
@@ -490,7 +493,7 @@ while running:
       #user can choose however many times they want the dice to roll
       rolls = input("How many times do you want the dice to be rolled? \n").lower()
 
-      if rolls.isdigit:
+      if rolls.isdigit():
         rolls = int(rolls)
         valid_input = True
 
@@ -682,5 +685,5 @@ while running:
 
   #tells the user if their input is not a valid command 
   else:
-    print("That input does not contain a command!")
+    print("That input does not contain a command, type 'commands' to see a list of commands or 'help' to see what each command does!")
     
