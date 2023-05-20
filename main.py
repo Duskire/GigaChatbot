@@ -266,7 +266,7 @@ while running:
     #gets a random number between 1 and 100
     secret_number = random.randint(1, 100)
     number_guessed = False
-    print("You will be given 7 attempts to guess a number between 1 and 100.")
+    print("You will be given 7 attempts to guess a random number.")
     time.sleep(2)
     
     #makes sure that the user hasn't run out of attempts or guessed the number
