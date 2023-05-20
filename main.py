@@ -116,9 +116,11 @@ def randomNumber(number1, number2, times, outcomes):
     if times > 1:
       outcomes.append(str(chance))
 
+  #if the function runs multiple times, return the outcomes in a list
   if times > 1:
     return outcomes
 
+  #if the function runs once times, return the outcome in a variable
   else:
     return chance
 
@@ -135,11 +137,15 @@ def gamble(amount, money):
     money = money - amount
     print(f"You lost ${amount}. You now have ${money}.\n")
 
+  #returns the user's new balance
   return money
 
+#converts kelvin to celcius and farenheit
 def kelvin_to_celsius_farenheit(kelvin):
   celsius = kelvin - 273.15
   farenheit = celsius * (9/5) + 32
+  
+  #returns both converted temperatures
   return celsius, farenheit
 
 
