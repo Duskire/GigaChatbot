@@ -18,7 +18,7 @@ running = True
 
 #lists and dictionaries for use later in the program
 #list of commands and special commands for main program
-#all commands yet to be added: "calculator", "convert", "hangman", "trivia", and variety to "hello" command
+#all commands yet to be added: "calculator", "convert", "hangman", "trivia", and variety to "hello" inputs
 commands = ["hello", "flip", "gamble", "guess", "joke", "list", "roll", "rps", "time", "quote", "weather"]
 other_commands = ["random", "stop", "clear", "commands", "help"]
 
@@ -148,6 +148,7 @@ def kelvin_to_celsius_farenheit(kelvin):
   #returns both converted temperatures
   return celsius, farenheit
 
+#need to fix some line spacing to make program slighty more readable
 
 #asks for the user's name and greets them to make a more personal connection
 name = input("What is your name?\n")
@@ -290,29 +291,28 @@ while running:
       if guess > secret_number:
         print("The number is lower")
         attempts += 1
-        time.sleep(1)
 
       elif guess < secret_number:
         print("The number is higher")
         attempts += 1
-        time.sleep(1)
 
       else:
         number_guessed = True
         attempts += 1
 
       #shows the user the list of the numbers they've guessed so they dont have to remember
-      time.sleep(2)
+      time.sleep(1)
       print("So far you have guessed:", ', '.join(guess_list))
+      time.sleep(1)
 
-    time.sleep(2)
+    time.sleep(1)
     
     #checks whether the user won or lost the game and ives them a different message for each
     if number_guessed:
       print(f"You got the number! You did it in {attempts} attempts! Your guesses were:", ', '.join(guess_list))
 
     else:
-      print("You didn't get the number within 7 attempts! Your guesses were:", ', '.join(guess_list))
+      print(f"You didn't guess the number {secret_number} within 7 attempts! Your guesses were:", ', '.join(guess_list))
 
   #tells the user a programming related joke usin pyjokes
   elif (user_input.find("joke") != -1):
@@ -327,7 +327,7 @@ while running:
     while not valid_input:
       print("List of commands for list:\n", ', '.join(list_commands))
       time.sleep(2)
-      list_choice = input("Choose one thing to do with your list:\n")
+      list_choice = input("Choose one command to do in list:\n")
 
       #lets user create a new list and name it  
       if (list_choice.find("create") != -1):
@@ -339,8 +339,8 @@ while running:
         temp_list_name = "user_"+list_name
 
         #checks if the list name already exists so there is no double-ups
-        if list_name in lists:
-          print("That is already a list with that name, please delete the existing one if you want to create a new list with that name!")
+        if temp_list_name in lists:
+          print("There is already a list with that name, please delete the existing one if you want to create a new list with that name!")
           time.sleep(1)
       
         else:
@@ -557,6 +557,7 @@ while running:
       
       else:
         print("That is not a valid input, please try again!")
+        time.sleep(1)
 
     #makes GigaChatbot's choice a random number between 1 and 3
     computer_choice = random.randint(1, 3)
@@ -588,18 +589,22 @@ while running:
 
     else:
       print("Something went wrong!")
+      time.sleep(1)
 
   #shows the user the time in their timezone and in NZ
   elif (user_input.find("time") != -1):
     
-    #gets their local time user date time and prints it
+    #gets the user's local time using datetime
     local_time = datetime.now()
-    print("Local Time:", local_time.strftime("%d/%m/%Y, %H:%M:%S"))
-    time.sleep(2)
-
-    #gets the time in NZ using datetime and pytz and prints it
+    
+    #gets the time in NZ using datetime and pytz
     time_nz = pytz.timezone("Pacific/Auckland")
     datetime_nz = datetime.now(time_nz)
+
+    #prints user's local time
+    print("Local Time:", local_time.strftime("%d/%m/%Y, %H:%M:%S"))
+    time.sleep(2)
+    #prints time in Auckland
     print("Time in Auckland, New Zealand:", datetime_nz.strftime("%d/%m/%Y, %H:%M:%S"))
 
   #give the user a random quote from a dictionary
