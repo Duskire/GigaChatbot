@@ -134,7 +134,7 @@ def gamble(amount, money):
     print(f"You won ${winnings}! You now have ${money}!\n")
     
   else:
-    money = money - amount
+    money -= amount
     print(f"You lost ${amount}. You now have ${money}.\n")
 
   #returns the user's new balance
